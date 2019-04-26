@@ -709,7 +709,7 @@
                         };
 
                         if (connection.accessToken) {
-                            options.headers = { "Authorization": "Bearer " + connection.accessToken };
+                            options.headers = { "Authorization": connection.accessToken };
                         }
 
                         return signalR.transports._logic.ajax(connection, options);
@@ -1270,7 +1270,7 @@
 
                 xhr = transportLogic.ajax(connection, {
                     url: url,
-                    headers: connection.accessToken ? { "Authorization": "Bearer " + connection.accessToken } : {},
+                    headers: connection.accessToken ? { "Authorization": connection.accessToken } : {},
                     success: function (result) {
                         var data;
 
@@ -1466,7 +1466,7 @@
                 url: url,
                 type: connection.ajaxDataType === "jsonp" ? "GET" : "POST",
                 contentType: signalR._.defaultContentType,
-                headers: connection.accessToken ? { "Authorization": "Bearer " + connection.accessToken } : {},
+                headers: connection.accessToken ? { "Authorization":  connection.accessToken } : {},
                 data: {
                     data: payload
                 },
@@ -1516,7 +1516,7 @@
                 async: async,
                 timeout: 1000,
                 type: "POST",
-                headers: connection.accessToken ? { "Authorization": "Bearer " + connection.accessToken } : {},
+                headers: connection.accessToken ? { "Authorization": connection.accessToken } : {},
                 dataType: "text" // We don't want to use JSONP here even when JSONP is enabled
             });
 
@@ -1539,7 +1539,7 @@
 
             connection._.startRequest = transportLogic.ajax(connection, {
                 url: getAjaxUrl(connection, "/start"),
-                headers: connection.accessToken ? { "Authorization": "Bearer " + connection.accessToken } : {},
+                headers: connection.accessToken ? { "Authorization": connection.accessToken } : {},
                 success: function (result, statusText, xhr) {
                     var data;
 
@@ -2482,7 +2482,7 @@
                         contentType: signalR._.defaultContentType,
                         data: postData,
                         timeout: connection._.pollTimeout,
-                        headers: connection.accessToken ? { "Authorization": "Bearer " + connection.accessToken } : {},
+                        headers: connection.accessToken ? { "Authorization": connection.accessToken } : {},
                         success: function (result) {
                             var minData,
                                 delay = 0,
